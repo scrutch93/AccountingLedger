@@ -1,13 +1,13 @@
 package com.pluralsight;
 
-public class Vendor {
+public class VendorTransaction {
     private String date;
     private String name;
     private String description;
     private float amount;
 
 
-    public Vendor(String date, String name, String description, float amount) {
+    public VendorTransaction(String date, String name, String description, float amount) {
         this.date = date;
         this.name = name;
         this.description = description;
@@ -47,4 +47,6 @@ public class Vendor {
     public void setAmount(float amount) {
         this.amount = amount;
     }
+
+
 }
