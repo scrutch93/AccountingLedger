@@ -52,7 +52,6 @@ public class MainApp {
 
         //BufferedReader bufferedReader = new BufferedReader(fileReader);
 
-
         System.out.println("You have opted to make a deposit.");
 
         System.out.println("Who are you making this deposit to?");
@@ -70,17 +69,27 @@ public class MainApp {
     }
 
 
-    public static void makePayment(){
+    public static void makePayment() throws IOException {
+        Scanner keyboard = new Scanner(System.in);
+
+        FileWriter fileWriter = new FileWriter("src/main/resources/VendorHistory.csv", true);
+        BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+
+        FileReader fileReader = new FileReader("src/main/resources/VendorHistory.csv");
         System.out.println("You have opted to make a payment.");
 
         System.out.println("Who are you making this payment to?");
-        //
-        System.out.println("Enter date of transaction.");
-
+        String vendor = keyboard.nextLine().trim();
+        System.out.println("Enter date of transaction [mm/dd/yyyy].");
+        String date = keyboard.nextLine().trim();
         System.out.println("Enter a brief description of this transaction.");
-
+        String description = keyboard.nextLine().trim();
         System.out.println("Enter amount.");
+        float amount = keyboard.nextFloat();
 
+        bufferedWriter.write(date + "|" + vendor + "|" + description + "|" + Float.toString(amount));
+
+        bufferedWriter.close();
     }
 
 
