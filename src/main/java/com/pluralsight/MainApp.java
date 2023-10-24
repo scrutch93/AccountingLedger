@@ -1,8 +1,5 @@
 package com.pluralsight;
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.Scanner;
 public class MainApp {
 
@@ -25,11 +22,13 @@ public class MainApp {
         int selection = Integer.parseInt(keyboard.nextLine());
 
         if (selection == 1){
+            makeDeposit();
         //make deposit method
         }else if (selection == 2) {
+            makePayment();
         //make payment method
         }else if(selection == 3) {
-            showLedger();
+            accessLedger();
         //access ledger method
         }else if(selection == 4) {
             System.out.printf("Goodbye.");
@@ -41,16 +40,29 @@ public class MainApp {
 
     }
 
-    public static void makeDeposit(){
+    public static void makeDeposit() throws IOException {
+        Scanner keyboard = new Scanner(System.in);
+
+        FileWriter fileWriter = new FileWriter("text.csv", true);
+        BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+
+        FileReader fileReader = new FileReader("text.csv");
+
+        BufferedReader bufferedReader = new BufferedReader(fileReader);
+
+
         System.out.println("You have opted to make a deposit.");
 
         System.out.println("Who are you making this deposit to?");
-        //
+        String vendor = keyboard.nextLine();
         System.out.println("Enter date of transaction.");
-
+        String date = keyboard.nextLine();
         System.out.println("Enter a brief description of this transaction.");
-
+        String description = keyboard.nextLine();
         System.out.println("Enter amount.");
+        float amount = keyboard.nextFloat();
+
+
     }
 
 
@@ -68,7 +80,7 @@ public class MainApp {
     }
 
 
-    public static void showLedger() throws IOException {
+    public static void accessLedger() throws IOException {
         FileReader filereader = new FileReader("src/main/resources/VendorHistory.csv");
         BufferedReader bufferedReader = new BufferedReader(filereader);
         String input = bufferedReader.readLine();
@@ -78,7 +90,7 @@ public class MainApp {
 
 
     }
-
+    bufferedReader.close();
 //Ledger -- right away when selected.
 //-- have an option to only show deposits.
 //--have an option to only show payments
