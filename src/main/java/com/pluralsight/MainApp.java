@@ -1,8 +1,10 @@
 package com.pluralsight;
 import java.io.*;
+import java.util.HashMap;
 import java.util.Scanner;
 public class MainApp {
 
+    public static HashMap<String,VendorTransaction> history = new HashMap<>();
 
     public static void main(String[] args) throws IOException {
         showHome();
@@ -43,26 +45,28 @@ public class MainApp {
     public static void makeDeposit() throws IOException {
         Scanner keyboard = new Scanner(System.in);
 
-        FileWriter fileWriter = new FileWriter("text.csv", true);
+        FileWriter fileWriter = new FileWriter("src/main/resources/VendorHistory.csv", true);
         BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
 
-        FileReader fileReader = new FileReader("text.csv");
+        FileReader fileReader = new FileReader("src/main/resources/VendorHistory.csv");
 
-        BufferedReader bufferedReader = new BufferedReader(fileReader);
+        //BufferedReader bufferedReader = new BufferedReader(fileReader);
 
 
         System.out.println("You have opted to make a deposit.");
 
         System.out.println("Who are you making this deposit to?");
-        String vendor = keyboard.nextLine();
-        System.out.println("Enter date of transaction.");
-        String date = keyboard.nextLine();
+        String vendor = keyboard.nextLine().trim();
+        System.out.println("Enter date of transaction [mm/dd/yyyy].");
+        String date = keyboard.nextLine().trim();
         System.out.println("Enter a brief description of this transaction.");
-        String description = keyboard.nextLine();
+        String description = keyboard.nextLine().trim();
         System.out.println("Enter amount.");
         float amount = keyboard.nextFloat();
 
+        bufferedWriter.write(date + "|" + vendor + "|" + description + "|" + Float.toString(amount));
 
+        bufferedWriter.close();
     }
 
 
