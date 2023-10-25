@@ -136,17 +136,47 @@ public class MainApp {
 
         } else if (selection == 2) {
             //showDeposits
+            showDeposits();
 
         } else if (selection == 3) {
             //showPayments
+            showPayments();
 
-        }else if (selection == 4){
+        } else if (selection == 4) {
             //showReports
-        }else{
+        } else {
             showHome();
         }
 
 
+    }
+
+
+    public static void showDeposits() throws IOException {
+
+        FileReader filereader = new FileReader("src/main/resources/VendorHistory.csv");
+        BufferedReader bufferedReader = new BufferedReader(filereader);
+        String input;
+        while ((input = bufferedReader.readLine()) != null) {
+            if (input.contains("Deposit")) {
+                System.out.println(input);
+            }
+
+        }
+
+    }
+
+    public static void showPayments() throws IOException {
+
+        FileReader filereader = new FileReader("src/main/resources/VendorHistory.csv");
+        BufferedReader bufferedReader = new BufferedReader(filereader);
+        String input;
+        while ((input = bufferedReader.readLine()) != null) {
+            if (input.contains("Payment")) {
+                System.out.println(input);
+            }
+
+        }
     }
 
 }
