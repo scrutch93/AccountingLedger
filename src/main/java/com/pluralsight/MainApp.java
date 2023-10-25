@@ -69,7 +69,7 @@ public class MainApp {
         System.out.println("Enter amount.");
         float amount = keyboard.nextFloat();
 
-        bufferedWriter.write(date + "|" + vendor + "|" + description + "|" + Float.toString(amount));
+        bufferedWriter.write(date + "|" + vendor + "|" + description + "|" + Float.toString(amount) + "|" + "Deposit");
 
         bufferedWriter.close();
     }
@@ -93,7 +93,7 @@ public class MainApp {
         System.out.println("Enter amount.");
         float amount = keyboard.nextFloat();
 
-        bufferedWriter.write(date + "|" + vendor + "|" + description + "|" + Float.toString(amount));
+        bufferedWriter.write(date + "|" + vendor + "|" + description + "|" + Float.toString(amount) + "|" + "Payment");
 
         bufferedWriter.close();
     }

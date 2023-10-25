@@ -6,12 +6,15 @@ public class VendorTransaction {
     private String description;
     private float amount;
 
+    private String action;
+
 
     public VendorTransaction(String date, String name, String description, float amount) {
         this.date = date;
         this.name = name;
         this.description = description;
         this.amount = amount;
+        this.action = action;
 
 
     }
@@ -36,6 +39,10 @@ public class VendorTransaction {
         this.date = date;
     }
 
+    public String getAction() {
+        return this.action;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -48,5 +55,7 @@ public class VendorTransaction {
         this.amount = amount;
     }
 
-
+    public void setAction(String action) {
+        this.action = action;
+    }
 }

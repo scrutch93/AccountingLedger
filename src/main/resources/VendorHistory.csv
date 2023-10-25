@@ -1,16 +1,15 @@
-﻿Date|Name|Description|Amount
-3/12/2023|Architect Design LLC|Drafting of House Layout|200.00
-3/15/2023|Website Gurus INC|Implementing Stripe Checkout|300.99
-3/17/2023|Business University|Spring semester payment|1000.00
-4/05/2023|Bakers Man Pizzeria|Company lunch outing special|115.00
-5/16/2023|Home Improvement World|Lawn care supply|95.55
-6/10/2023|Architect Design LLC|Revision|200.00
-8/19/2023|Website Gurus INC|Restructuring landing page|250.00
-4/13/2023|Home Improvement World| Kitchen countertop installation|500.85
-4/5/2023|Bakers Man Pizzeria|Christmas Party dinner special|150.00
-8/17/2023|Business University|Fall semester payment|1000.00
-11/11/2023|Business University|Career Network Seminar VIP|20.00
-09/14/2023|Website Gurus INC|Updating store  API|120.89
-4/7/2023|Bakers Man Pizzeria|Birthday Party  special|80.56
-7/20/2023|Home Improvement World|Washer and Dryer Installation|57.99
-12/22/2023|Walmart|Gifts|30.66
+﻿Date|Name|Description|Amount|Action
+3/12/2023|Architect Design LLC|Drafting of House Layout|200.00|Deposit
+3/15/2023|Website Gurus INC|Implementing Stripe Checkout|300.99|Deposit
+3/17/2023|Business University|Spring semester payment|1000.00|Payment
+4/05/2023|Bakers Man Pizzeria|Company lunch outing special|115.00|Payment
+5/16/2023|Home Improvement World|Lawn care supply|95.55|Payment
+6/10/2023|Architect Design LLC|Revision|200.00|Deposit
+8/19/2023|Website Gurus INC|Restructuring landing page|250.00|Payment
+4/13/2023|Home Improvement World| Kitchen countertop installation|500.85|Deposit
+4/5/2023|Bakers Man Pizzeria|Christmas Party dinner special|150.00|Payment
+8/17/2023|Business University|Fall semester payment|1000.00|Payment
+11/11/2023|Business University|Career Network Seminar VIP|20.00|Payment
+09/14/2023|Website Gurus INC|Updating store  API|120.89|Deposit
+4/7/2023|Bakers Man Pizzeria|Birthday Party  special|80.56|Payment
+7/20/2023|Home Improvement World|Washer and Dryer Installation|57.99|Deposit
