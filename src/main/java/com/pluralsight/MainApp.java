@@ -125,8 +125,9 @@ public class MainApp {
                     String name = transaction[1];
                     String description = transaction[2];
                     float amount = Float.parseFloat(transaction[3].trim());
+                    String action = transaction[4];
 
-                    history.put(date, new VendorTransaction(date, name, description, amount));
+                    history.put(date, new VendorTransaction(date, name, description, amount, action));
 
                     System.out.println(input);
                 }

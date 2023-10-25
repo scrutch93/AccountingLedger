@@ -9,7 +9,7 @@ public class VendorTransaction {
     private String action;
 
 
-    public VendorTransaction(String date, String name, String description, float amount) {
+    public VendorTransaction(String date, String name, String description, float amount, String action) {
         this.date = date;
         this.name = name;
         this.description = description;
