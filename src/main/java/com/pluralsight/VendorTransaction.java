@@ -58,4 +58,9 @@ public class VendorTransaction {
     public void setAction(String action) {
         this.action = action;
     }
+
+    @Override
+    public String toString() {
+        return date + "|" + name + "|" + description + "|"+ amount + "|" + action;
+    }
 }

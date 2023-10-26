@@ -1,6 +1,7 @@
 package com.pluralsight;
 import java.io.*;
 import java.sql.SQLOutput;
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Scanner;
 import java.io.IOException;
@@ -14,6 +15,7 @@ public class MainApp {
     public static HashMap<String, VendorTransaction> history = new HashMap<String, VendorTransaction>();
 
     public static void main(String[] args) throws IOException {
+
         System.out.println("Welcome.");
         loadLedger();
         showHome();
@@ -125,9 +127,18 @@ public class MainApp {
 
                 history.put(name, new VendorTransaction(date, name, description, amount, action));
 
+
+
+
+
             }
 
         }
+
+//        for (VendorTransaction x: history.values()) {
+//            System.out.println(x.toString());
+//
+//        }
         bufferedReader.close();
 
     }
@@ -229,23 +240,27 @@ public class MainApp {
         System.out.println("Select from the following options");
         System.out.println("[1] Month to Date");
         System.out.println("[2] Previous Month");
-        System.out.println("[3] Previous Year");
-        System.out.println("[4] Search by Vendor");
-        System.out.println("[5] Return to Previous Screen");
-        System.out.println("[6] Home screen");
+        System.out.println("[3] Year to Date");
+        System.out.println("[4] Previous Year");
+        System.out.println("[5] Search by Vendor");
+        System.out.println("[6] Return to Previous Screen");
+        System.out.println("[7] Home screen");
 
         int selection = keyboard.nextInt();
         if (selection == 1) {
-
+        //month to date function
+            MonthToDateFilter();
         } else if (selection == 2) {
-
+        //Previous month function
         } else if (selection == 3) {
-
-        } else if (selection == 4) {
-            vendorSearch();
+        //Year to date function
+        } else if(selection == 4) {
+        //Previous Year function
         } else if (selection == 5) {
-            accessLedger();
+            vendorSearch();
         } else if (selection == 6) {
+            accessLedger();
+        } else if (selection == 7) {
             showHome();
         } else {
             System.out.println("That's not a valid entry.");
@@ -272,5 +287,36 @@ public class MainApp {
         }
         System.out.println("----------------------");
 }
+
+public static void MonthToDateFilter(){
+    DateTimeFormatter formatOne = DateTimeFormatter.ofPattern("M/d/yyyy");
+
+
+    for (VendorTransaction x: history.values()) {
+
+        if(LocalDate.parse(x.getDate(), formatOne).getMonthValue() == LocalDate.now().getMonthValue() && LocalDate.parse(x.getDate(), formatOne).getYear() == LocalDate.now().getYear()){
+            System.out.printf(x.toString());
+        }
+
+    }
+
+}
+    public static void PreviousMonthFilter(){
+        DateTimeFormatter formatOne = DateTimeFormatter.ofPattern("M/d/yyyy");
+
+
+        for (VendorTransaction x: history.values()) {
+
+            if(LocalDate.parse(x.getDate(), formatOne).getMonthValue() == LocalDate.now().getMonthValue() && LocalDate.parse(x.getDate(), formatOne).getYear() == LocalDate.now().getYear()){
+                System.out.printf(x.toString());
+            }
+
+        }
+
+    }
+
+
+
+
 
 }
