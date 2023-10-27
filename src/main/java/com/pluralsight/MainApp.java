@@ -288,6 +288,7 @@ public class MainApp {
 
         }
         System.out.println("----------------------");
+        showReports();
 }
 
 public static void MonthToDateFilter() throws IOException {
