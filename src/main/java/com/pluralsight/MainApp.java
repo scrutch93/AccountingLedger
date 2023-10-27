@@ -216,7 +216,7 @@ public class MainApp {
 
         }
         System.out.println("----------------------");
-
+        accessLedger();
     }
 
     public static void showPayments() throws IOException {
@@ -232,6 +232,7 @@ public class MainApp {
 
         }
         System.out.println("----------------------");
+        accessLedger();
     }
 
     public static void showReports() throws IOException {
@@ -252,6 +253,7 @@ public class MainApp {
             MonthToDateFilter();
         } else if (selection == 2) {
         //Previous month function
+            PreviousMonthFilter();
         } else if (selection == 3) {
         //Year to date function
         } else if(selection == 4) {
@@ -288,7 +290,7 @@ public class MainApp {
         System.out.println("----------------------");
 }
 
-public static void MonthToDateFilter(){
+public static void MonthToDateFilter() throws IOException {
     DateTimeFormatter formatOne = DateTimeFormatter.ofPattern("M/d/yyyy");
 
 
@@ -299,23 +301,38 @@ public static void MonthToDateFilter(){
         }
 
     }
-
+    showReports();
 }
-    public static void PreviousMonthFilter(){
+    public static void PreviousMonthFilter() throws IOException {
         DateTimeFormatter formatOne = DateTimeFormatter.ofPattern("M/d/yyyy");
 
+        System.out.printf("-------------------------------------");
 
         for (VendorTransaction x: history.values()) {
 
-            if(LocalDate.parse(x.getDate(), formatOne).getMonthValue() == LocalDate.now().getMonthValue() && LocalDate.parse(x.getDate(), formatOne).getYear() == LocalDate.now().getYear()){
+            if(LocalDate.parse(x.getDate(), formatOne).getMonthValue() == LocalDate.now().getMonthValue()-1 && LocalDate.parse(x.getDate(), formatOne).getYear() == LocalDate.now().getYear()){
                 System.out.printf(x.toString());
             }
 
         }
-
+        System.out.printf("-------------------------------------");
+        showReports();
     }
 
+    public static void PreviousYearFilter(){
+        DateTimeFormatter formatOne = DateTimeFormatter.ofPattern("M/d/yyyy");
 
+        System.out.printf("-------------------------------------");
+        for (VendorTransaction x: history.values()) {
+
+            if(LocalDate.parse(x.getDate(), formatOne).getMonthValue() == LocalDate.now().getMonthValue()-1 && LocalDate.parse(x.getDate(), formatOne).getYear() == LocalDate.now().getYear()-1){
+                System.out.printf(x.toString());
+            }
+
+        }
+        System.out.printf("-------------------------------------");
+
+    }
 
 
 
