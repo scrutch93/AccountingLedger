@@ -8,8 +8,6 @@ import java.io.IOException;
 import java.lang.Float;
 import java.time.format.DateTimeFormatter;
 
-import static java.lang.Float.parseFloat;
-
 public class MainApp {
 
     public static HashMap<String, VendorTransaction> history = new HashMap<String, VendorTransaction>();
@@ -21,7 +19,6 @@ public class MainApp {
         showHome();
 
     }
-//HomeScreen
 
     public static void showHome() throws IOException {
         Scanner keyboard = new Scanner(System.in);
@@ -74,7 +71,7 @@ public class MainApp {
         System.out.println("Enter amount.");
         float amount = keyboard.nextFloat();
 
-        bufferedWriter.write(date + "|" + vendor + "|" + description + "|" + Float.toString(amount) + "|" + "Deposit");
+        bufferedWriter.write("\n" + date + "|" + vendor + "|" + description + "|" + Float.toString(amount) + "|" + "Deposit");
 
         bufferedWriter.close();
         System.out.println("Deposit has been recorded.");
@@ -164,18 +161,8 @@ public class MainApp {
             String input;
             System.out.println("----------------------");
             while ((input = bufferedReader.readLine()) != null) {
-//                String[] transaction = input.split("\\|");
-//                if (!transaction[1].equals("Name")) {
-//                    String date = transaction[0];
-//                    String name = transaction[1];
-//                    String description = transaction[2];
-//                    float amount = Float.parseFloat(transaction[3].trim());
-//                    String action = transaction[4];
-//
-//                    history.put(date, new VendorTransaction(date, name, description, amount, action));
 
                     System.out.println(input);
-
 
                 }
                 bufferedReader.close();
@@ -195,10 +182,11 @@ public class MainApp {
         } else if (selection == 4) {
             //showReports
             showReports();
-        } else {
+        } else if (selection == 5){
             showHome();
-        }
-
+        }else
+            System.out.println("Sorry, that's not an option.");
+            accessLedger();
 
     }
 
