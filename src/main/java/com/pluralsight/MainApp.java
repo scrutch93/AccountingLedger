@@ -1,6 +1,5 @@
 package com.pluralsight;
 import java.io.*;
-import java.sql.SQLOutput;
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Scanner;
@@ -31,6 +30,7 @@ public class MainApp {
 
         int selection = Integer.parseInt(keyboard.nextLine());
 
+
         if (selection == 1) {
             makeDeposit();
             //make deposit method
@@ -42,6 +42,7 @@ public class MainApp {
             //access ledger method
         } else if (selection == 4) {
             System.out.printf("Goodbye.");
+            System.exit(0);
         } else {
             System.out.println("Sorry, that's not an option");
             showHome();
@@ -56,9 +57,6 @@ public class MainApp {
         FileWriter fileWriter = new FileWriter("src/main/resources/VendorHistory.csv", true);
         BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
 
-        //FileReader fileReader = new FileReader("src/main/resources/VendorHistory.csv");
-
-        //BufferedReader bufferedReader = new BufferedReader(fileReader);
 
         System.out.println("You have opted to make a deposit.");
 
@@ -86,7 +84,7 @@ public class MainApp {
         FileWriter fileWriter = new FileWriter("src/main/resources/VendorHistory.csv", true);
         BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
 
-        //FileReader fileReader = new FileReader("src/main/resources/VendorHistory.csv");
+
         System.out.println("You have opted to make a payment.");
 
         System.out.println("Who are you making this payment to?");
@@ -124,18 +122,11 @@ public class MainApp {
 
                 history.put(name, new VendorTransaction(date, name, description, amount, action));
 
-
-
-
-
             }
 
         }
 
-//        for (VendorTransaction x: history.values()) {
-//            System.out.println(x.toString());
-//
-//        }
+
         bufferedReader.close();
 
     }
@@ -286,10 +277,11 @@ public static void MonthToDateFilter() throws IOException {
     for (VendorTransaction x: history.values()) {
 
         if(LocalDate.parse(x.getDate(), formatOne).getMonthValue() == LocalDate.now().getMonthValue() && LocalDate.parse(x.getDate(), formatOne).getYear() == LocalDate.now().getYear()){
-            System.out.printf(x.toString());
+            System.out.printf(x.toString() + "\n");
         }
 
     }
+
     showReports();
 }
     public static void PreviousMonthFilter() throws IOException {
